@@ -32,10 +32,10 @@ use constant COLOR_TABLE => {
     'Variable_Typeglob' => 'bright_red',
 };
 
-# sub cmd_head1 {
-#     my ($self, $attrs, $text) = @_;
-#     $self->SUPER::cmd_head1($attrs, colored($text, 'cyan'));
-# }
+sub cmd_head1 {
+    my ($self, $attrs, $text) = @_;
+    $self->SUPER::cmd_head1($attrs, colored($text, 'cyan'));
+}
 #
 # sub cmd_s {
 # }
@@ -102,6 +102,7 @@ Pod::Text::Color::More - It's new $module
 Pod::Text::Color::More is ...
 
 =head1 SEE ALSO
+
 L<Pod::Text>
 
 =head1 LICENSE
