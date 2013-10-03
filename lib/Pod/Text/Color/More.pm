@@ -34,7 +34,7 @@ use constant COLOR_TABLE => {
 
 sub cmd_head1 {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_head1($attrs, colored($text, 'cyan'));
+    colored($text . "\n", 'blue');
 }
 #
 # sub cmd_s {
@@ -72,7 +72,7 @@ sub cmd_head1 {
 sub cmd_verbatim {
     my ($self, $attrs, $text) = @_;
 
-    my $formatter   = Syntax::Highlight::Perl::Improved->new;
+    my $formatter = Syntax::Highlight::Perl::Improved->new;
 
     my $color_table = COLOR_TABLE;
     while (my ($type, $style) = each %{$color_table}) {
