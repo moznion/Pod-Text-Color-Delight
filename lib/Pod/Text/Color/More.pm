@@ -34,42 +34,35 @@ use constant COLOR_TABLE => {
 
 sub cmd_head1 {
     my ($self, $attrs, $text) = @_;
-    colored($text . "\n", 'blue');
+    $self->SUPER::cmd_head1($attrs, colored($text, 'cyan'));
 }
-#
-# sub cmd_s {
-# }
-#
-# sub cmd_f {
-#     return colored ($_[2], 'cyan')
-# }
-#
-# sub cmd_x {
-# }
-#
-# sub cmd_e {
-# }
-#
-# sub cmd_b {
-#     return colored ($_[2], 'bold')
-# }
-#
-# sub cms_z {
-# }
-#
-# sub cmd_c {
-# }
-#
-# sub cmd_i {
-#     return colored ($_[2], 'yellow')
-# }
-#
-# sub cmd_l {
-#     # my ($self, $attrs, $text) = @_;
-#     # $self->SUPER::cmd_l($attrs, $text);
-# }
+
+sub cmd_f {
+    my ($self, $attrs, $text) = @_;
+    $self->SUPER::cmd_f($attrs, colored($text, 'bright_green'));
+}
+
+sub cmd_c {
+    my ($self, $attrs, $text) = @_;
+    $self->SUPER::cmd_c($attrs, $self->_highlight_code($attrs, $text));
+}
+
+sub cmd_i {
+    my ($self, $attrs, $text) = @_;
+    $self->SUPER::cmd_i($attrs, colored($text, 'reset italic'));
+}
+
+sub cmd_l {
+    my ($self, $attrs, $text) = @_;
+    $self->SUPER::cmd_l($attrs, colored($text, 'blue'));
+}
 
 sub cmd_verbatim {
+    my ($self, $attrs, $text) = @_;
+    $self->SUPER::cmd_verbatim($attrs, $self->_highlight_code($attrs, $text));
+}
+
+sub _highlight_code {
     my ($self, $attrs, $text) = @_;
 
     my $formatter = Syntax::Highlight::Perl::Improved->new;
@@ -79,8 +72,7 @@ sub cmd_verbatim {
         $formatter->set_format($type, [Term::ANSIColor::color($style), Term::ANSIColor::color('reset')]);
     }
 
-    $formatter->format_string($text);
-    $self->SUPER::cmd_verbatim($attrs, $formatter->format_string($text));
+    return $formatter->format_string($text);
 }
 
 1;
