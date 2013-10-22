@@ -3,6 +3,7 @@ use 5.008005;
 use strict;
 use warnings;
 use Term::ANSIColor qw(colored);
+use File::Spec::Functions qw(catfile);
 use Syntax::Highlight::Perl::Improved;
 use parent 'Pod::Text::Color';
 
@@ -73,6 +74,11 @@ sub _highlight_code {
     my $formatter = Syntax::Highlight::Perl::Improved->new;
 
     my $color_table = COLOR_TABLE;
+    my $color_table_file = catfile($ENV{HOME}, '.pod_text_color_more');
+    if (!$ENV{POD_TEXT_COLOR_MORE_DEFAULT} && -f $color_table_file) {
+        $color_table = do $color_table_file;
+    }
+
     while (my ($type, $style) = each %{$color_table}) {
         $formatter->set_format($type, [Term::ANSIColor::color($style), Term::ANSIColor::color('reset')]);
     }
