@@ -9,32 +9,37 @@ use parent 'Pod::Text::Color';
 our $VERSION = '0.01';
 
 use constant COLOR_TABLE => {
-    'Bareword'          => 'bright_green',
-    'Builtin_Function'  => 'blue',
+    'Character'         => 'cyan',
+    'String'            => 'rgb542',
+    'Quote'             => 'rgb542',
+    'Label'             => 'rgb542',
+
+    'Builtin_Function'  => 'bright_red',
     'Builtin_Operator'  => 'bright_red',
-    'Character'         => 'bold bright_red',
-    'Comment_Normal'    => 'bright_blue',
-    'Comment_POD'       => 'bright_black',
-    'Directive'         => 'bold bright_black',
-    'Keyword'           => 'white',
-    'Label'             => 'bright_magenta',
-    'Line'              => 'white',
-    'Number'            => 'bright_red',
-    'Operator'          => 'white',
-    'Package'           => 'bold bright_red',
-    'Quote'             => 'blue',
-    'String'            => 'blue',
-    'Subroutine'        => 'yellow',
+
+    'Keyword'           => 'bright_red',
+    'Package'           => 'rgb345',
+
+    'Subroutine'        => 'rgb454',
+    'Bareword'          => 'white',
     'Symbol'            => 'white',
-    'Variable_Array'    => 'cyan',
-    'Variable_Hash'     => 'magenta',
-    'Variable_Scalar'   => 'green',
-    'Variable_Typeglob' => 'bright_red',
+    'Operator'          => 'white',
+    'Number'            => 'white',
+
+    'Variable_Hash'     => 'rgb520',
+    'Variable_Array'    => 'rgb520',
+    'Variable_Scalar'   => 'rgb520',
+    'Variable_Typeglob' => 'rgb520',
+
+    'Comment_Normal'    => 'grey10',
+    'Comment_POD'       => 'grey10',
+    'DATA'              => 'grey10',
+    'Directive'         => 'bright_green',
 };
 
 sub cmd_head1 {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_head1($attrs, colored($text, 'cyan'));
+    $self->SUPER::cmd_head1($attrs, colored($text, 'bright_cyan'));
 }
 
 sub cmd_f {
@@ -54,7 +59,7 @@ sub cmd_i {
 
 sub cmd_l {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_l($attrs, colored($text, 'blue'));
+    $self->SUPER::cmd_l($attrs, colored($text, 'rgb045'));
 }
 
 sub cmd_verbatim {
