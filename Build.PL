@@ -23,8 +23,8 @@ my %args = (
         'Module::Build' => 0.38,
     },
 
-    name            => 'Pod-Text-Color-More',
-    module_name     => 'Pod::Text::Color::More',
+    name            => 'Pod-Text-Color-Delight',
+    module_name     => 'Pod::Text::Color::Delight',
     allow_pureperl => 0,
 
     script_files => [glob('script/*'), glob('bin/*')],

@@ -1,14 +1,19 @@
 # NAME
 
-Pod::Text::Color::More - It's new $module
+Pod::Text::Color::Delight - It's new $module
 
 # SYNOPSIS
 
-    use Pod::Text::Color::More;
+    use Pod::Text::Color::Delight;
+    say 'Hello';
 
 # DESCRIPTION
 
-Pod::Text::Color::More is ...
+Pod::Text::Color::Delight is ...
+
+# SEE ALSO
+
+[Pod::Text](http://search.cpan.org/perldoc?Pod::Text)
 
 # LICENSE
 

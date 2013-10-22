@@ -1,4 +1,4 @@
-package Pod::Text::Color::More;
+package Pod::Text::Color::Delight;
 use 5.008005;
 use strict;
 use warnings;
@@ -93,16 +93,16 @@ __END__
 
 =head1 NAME
 
-Pod::Text::Color::More - It's new $module
+Pod::Text::Color::Delight - It's new $module
 
 =head1 SYNOPSIS
 
-    use Pod::Text::Color::More;
+    use Pod::Text::Color::Delight;
     say 'Hello';
 
 =head1 DESCRIPTION
 
-Pod::Text::Color::More is ...
+Pod::Text::Color::Delight is ...
 
 =head1 SEE ALSO
 

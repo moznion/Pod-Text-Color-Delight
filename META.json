@@ -4,7 +4,7 @@
       "moznion <moznion@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.7.2, CPAN::Meta::Converter version 2.132661",
+   "generated_by" : "Minilla/v0.8.0, CPAN::Meta::Converter version 2.132830",
    "license" : [
       "perl_5"
    ],
@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Pod-Text-Color-More",
+   "name" : "Pod-Text-Color-Delight",
    "no_index" : {
       "directory" : [
          "t",
@@ -21,7 +21,8 @@
          "share",
          "eg",
          "examples",
-         "author"
+         "author",
+         "builder"
       ]
    },
    "prereqs" : {
@@ -52,5 +53,16 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/moznion/Pod-Text-Color-Delight/issues"
+      },
+      "homepage" : "https://github.com/moznion/Pod-Text-Color-Delight",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/moznion/Pod-Text-Color-Delight",
+         "web" : "https://github.com/moznion/Pod-Text-Color-Delight"
+      }
+   },
    "version" : "0.01"
 }
