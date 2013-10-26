@@ -162,7 +162,7 @@ Basic usage is the same as L<Pod::Text::Color>. So please refer it.
 You can configure colors as you like!
 What is necessary is just to put a F<.pod_text_color_delight> (this is configuration file) on your home directory.
 
-The example of a configuration file should look at <a href="https://github.com/moznion/Pod-Text-Color-Delight/blob/master/sample">samples</a> .
+The example of a configuration file should look at <a href="https://github.com/moznion/Pod-Text-Color-Delight/blob/master/sample/configurations">samples</a>.
 
 =end html
 
