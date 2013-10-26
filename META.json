@@ -64,7 +64,7 @@
       "homepage" : "https://github.com/moznion/Pod-Text-Color-Delight",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/moznion/Pod-Text-Color-Delight",
+         "url" : "git://github.com/moznion/Pod-Text-Color-Delight.git",
          "web" : "https://github.com/moznion/Pod-Text-Color-Delight"
       }
    },

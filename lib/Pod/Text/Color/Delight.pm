@@ -150,8 +150,10 @@ Pod::Text::Color::Delight - Delight Light Highlight the POD
 
 Pod::Text::Color::Delight is a subclass of L<Pod::Text::Color> that highlights the pod text by using ANSI color escape.
 
-Highlight of this module is a little radical in comparison with parent. For example, this module highlights headlines, links, and other several elements.
+Highlight of this module is a little radical in comparison with parent. On default setting, this module highlights headlines, links, and other several elements.
 Additionally, this module also highlights Perl code (e.g. SYNOPSIS).
+
+And you can configure the color settings for each elements as you like. Please look L<"CONFIGURATION AND ENVIRONMENT">.
 
 Basic usage is the same as L<Pod::Text::Color>. So please refer it.
 
