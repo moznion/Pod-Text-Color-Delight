@@ -1,6 +1,8 @@
 +{
     head1  => 'bright_cyan',
     head2  => 'reset bold',
+    head3  => '',
+    head4  => '',
     bold   => 'reset bold',
     file   => 'bright_green',
     italic => 'reset italic',

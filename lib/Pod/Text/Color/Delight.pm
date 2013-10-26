@@ -12,6 +12,8 @@ our $VERSION = '0.01';
 use constant COLOR_TABLE => {
     head1  => 'bright_cyan',
     head2  => 'reset bold',
+    head3  => '',
+    head4  => '',
     bold   => 'reset bold',
     file   => 'bright_green',
     italic => 'reset italic',
@@ -71,6 +73,16 @@ sub cmd_head2 {
     $self->SUPER::cmd_head2($attrs, colored($text, $self->_select_color('head2')));
 }
 
+sub cmd_head3 {
+    my ($self, $attrs, $text) = @_;
+    $self->SUPER::cmd_head3($attrs, colored($text, $self->_select_color('head3')));
+}
+
+sub cmd_head4 {
+    my ($self, $attrs, $text) = @_;
+    $self->SUPER::cmd_head4($attrs, colored($text, $self->_select_color('head4')));
+}
+
 sub cmd_b {
     my ($self, $attrs, $text) = @_;
     $self->SUPER::cmd_b($attrs, colored($text, $self->_select_color('bold')));
@@ -116,7 +128,7 @@ sub _highlight_code {
 sub _select_color {
     my ($self, $element) = @_;
 
-    return $self->{color_table}->{$element} || COLOR_TABLE->{$element};
+    return $self->{color_table}->{$element} || COLOR_TABLE->{$element} || 'reset';
 }
 1;
 __END__
