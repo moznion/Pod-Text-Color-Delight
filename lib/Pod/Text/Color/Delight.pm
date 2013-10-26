@@ -74,8 +74,8 @@ sub _highlight_code {
     my $formatter = Syntax::Highlight::Perl::Improved->new;
 
     my $color_table = COLOR_TABLE;
-    my $color_table_file = catfile($ENV{HOME}, '.pod_text_color_more');
-    if (!$ENV{POD_TEXT_COLOR_MORE_DEFAULT} && -f $color_table_file) {
+    my $color_table_file = catfile($ENV{HOME}, '.pod_text_color_delight');
+    if (!$ENV{POD_TEXT_COLOR_DELIGHT_DEFAULT} && -f $color_table_file) {
         $color_table = do $color_table_file;
     }
 
