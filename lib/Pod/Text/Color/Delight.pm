@@ -10,7 +10,13 @@ use parent 'Pod::Text::Color';
 our $VERSION = '0.01';
 
 use constant COLOR_TABLE => {
-    code => {
+    head1  => 'bright_cyan',
+    head2  => 'reset bold',
+    bold   => 'reset bold',
+    file   => 'bright_green',
+    italic => 'reset italic',
+    link   => 'rgb045',
+    code   => {
         Character         => 'cyan',
         String            => 'rgb542',
         Quote             => 'rgb542',
@@ -40,14 +46,39 @@ use constant COLOR_TABLE => {
     },
 };
 
+sub new {
+    my $class = shift;
+
+    my $self = $class->SUPER::new;
+
+    my $color_table_file = catfile($ENV{HOME}, '.pod_text_color_delight');
+    my $color_table = COLOR_TABLE;
+    if (!$ENV{POD_TEXT_COLOR_DELIGHT_DEFAULT} && -f $color_table_file) {
+        $color_table = do $color_table_file;
+    }
+
+    $self->{color_table} = $color_table;
+    return $self;
+}
+
 sub cmd_head1 {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_head1($attrs, colored($text, 'bright_cyan'));
+    $self->SUPER::cmd_head1($attrs, colored($text, $self->_select_color('head1')));
+}
+
+sub cmd_head2 {
+    my ($self, $attrs, $text) = @_;
+    $self->SUPER::cmd_head2($attrs, colored($text, $self->_select_color('head2')));
+}
+
+sub cmd_b {
+    my ($self, $attrs, $text) = @_;
+    $self->SUPER::cmd_b($attrs, colored($text, $self->_select_color('bold')));
 }
 
 sub cmd_f {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_f($attrs, colored($text, 'bright_green'));
+    $self->SUPER::cmd_f($attrs, colored($text, $self->_select_color('file')));
 }
 
 sub cmd_c {
@@ -57,12 +88,12 @@ sub cmd_c {
 
 sub cmd_i {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_i($attrs, colored($text, 'reset italic'));
+    $self->SUPER::cmd_i($attrs, colored($text, $self->_select_color('italic')));
 }
 
 sub cmd_l {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_l($attrs, colored($text, 'rgb045'));
+    $self->SUPER::cmd_l($attrs, colored($text, $self->_select_color('link')));
 }
 
 sub cmd_verbatim {
@@ -75,19 +106,18 @@ sub _highlight_code {
 
     my $formatter = Syntax::Highlight::Perl::Improved->new;
 
-    my $color_table = COLOR_TABLE->{code};
-    my $color_table_file = catfile($ENV{HOME}, '.pod_text_color_delight');
-    if (!$ENV{POD_TEXT_COLOR_DELIGHT_DEFAULT} && -f $color_table_file) {
-        $color_table = (do $color_table_file)->{code};
-    }
-
-    while (my ($type, $style) = each %{$color_table}) {
+    while (my ($type, $style) = each %{$self->_select_color('code')}) {
         $formatter->set_format($type, [Term::ANSIColor::color($style), Term::ANSIColor::color('reset')]);
     }
 
     return $formatter->format_string($text);
 }
 
+sub _select_color {
+    my ($self, $element) = @_;
+
+    return $self->{color_table}->{$element} || COLOR_TABLE->{$element};
+}
 1;
 __END__
 
