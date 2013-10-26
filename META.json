@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "Delight Light Highlight the POD",
    "author" : [
       "moznion <moznion@gmail.com>"
    ],
@@ -43,6 +43,10 @@
       },
       "runtime" : {
          "requires" : {
+            "Pod::Text::Color" : "0",
+            "Syntax::Highlight::Perl::Improved" : "0",
+            "Term::ANSIColor" : "0",
+            "parent" : "0",
             "perl" : "5.008005"
          }
       },
