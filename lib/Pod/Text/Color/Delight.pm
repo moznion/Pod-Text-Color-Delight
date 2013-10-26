@@ -147,9 +147,10 @@ Basic usage is the same as L<Pod::Text::Color>. So please refer it.
 
 =begin html
 
-You can configure color codes for the code section.
-What is necessary is just to put a F<.pod_text_color_delight> (it is configuration file) on your home directory.
-The example of a configuration file should look at <a href="https://github.com/moznion/Pod-Text-Color-Delight/blob/master/eg/pod_text_color_delight.sample">pod_text_color_delight.sample</a> .
+You can configure colors as you like!
+What is necessary is just to put a F<.pod_text_color_delight> (this is configuration file) on your home directory.
+
+The example of a configuration file should look at <a href="https://github.com/moznion/Pod-Text-Color-Delight/blob/master/sample">samples</a> .
 
 =end html
 
