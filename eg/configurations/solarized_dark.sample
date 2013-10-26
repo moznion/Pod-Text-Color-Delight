@@ -1,0 +1,29 @@
++{
+    'Character'         => 'red',
+    'String'            => 'cyan',
+    'Number'            => 'cyan',
+    'Quote'             => 'cyan',
+
+    'Label'             => 'green',
+
+    'Builtin_Function'  => 'green',
+    'Builtin_Operator'  => 'green',
+    'Keyword'           => 'green',
+
+    'Package'           => 'yellow',
+    'Variable_Hash'     => 'yellow',
+    'Variable_Array'    => 'yellow',
+    'Variable_Scalar'   => 'yellow',
+    'Variable_Typeglob' => 'yellow',
+
+    'Subroutine'        => 'blue',
+
+    'Bareword'          => 'reset',
+    'Symbol'            => 'reset',
+    'Operator'          => 'reset',
+
+    'Comment_Normal'    => 'grey7',
+    'Comment_POD'       => 'grey7',
+    'DATA'              => 'grey7',
+    'Directive'         => 'bright_red',
+};
