@@ -1,29 +1,32 @@
 +{
-    'Character'         => 'red',
-    'String'            => 'cyan',
-    'Number'            => 'cyan',
-    'Quote'             => 'cyan',
+    code => {
+        Character         => 'red',
+        String            => 'cyan',
+        Number            => 'cyan',
+        Quote             => 'cyan',
 
-    'Label'             => 'green',
+        Label             => 'green',
 
-    'Builtin_Function'  => 'green',
-    'Builtin_Operator'  => 'green',
-    'Keyword'           => 'green',
+        Builtin_Function  => 'green',
+        Builtin_Operator  => 'green',
+        Keyword           => 'green',
 
-    'Package'           => 'yellow',
-    'Variable_Hash'     => 'yellow',
-    'Variable_Array'    => 'yellow',
-    'Variable_Scalar'   => 'yellow',
-    'Variable_Typeglob' => 'yellow',
+        Package           => 'yellow',
+        Variable_Hash     => 'yellow',
+        Variable_Array    => 'yellow',
+        Variable_Scalar   => 'yellow',
+        Variable_Typeglob => 'yellow',
 
-    'Subroutine'        => 'blue',
+        Subroutine        => 'blue',
 
-    'Bareword'          => 'reset',
-    'Symbol'            => 'reset',
-    'Operator'          => 'reset',
+        Bareword          => 'reset',
+        Symbol            => 'reset',
+        Operator          => 'reset',
 
-    'Comment_Normal'    => 'bright_green',
-    'Comment_POD'       => 'bright_green',
-    'DATA'              => 'bright_green',
-    'Directive'         => 'bright_red',
+        Comment_Normal    => 'bright_green',
+        Comment_POD       => 'bright_green',
+        DATA              => 'bright_green',
+
+        Directive         => 'bright_red',
+    },
 };

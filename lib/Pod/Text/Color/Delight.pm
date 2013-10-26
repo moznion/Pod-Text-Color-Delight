@@ -10,32 +10,34 @@ use parent 'Pod::Text::Color';
 our $VERSION = '0.01';
 
 use constant COLOR_TABLE => {
-    'Character'         => 'cyan',
-    'String'            => 'rgb542',
-    'Quote'             => 'rgb542',
-    'Label'             => 'rgb542',
+    code => {
+        Character         => 'cyan',
+        String            => 'rgb542',
+        Quote             => 'rgb542',
+        Label             => 'rgb542',
 
-    'Builtin_Function'  => 'bright_red',
-    'Builtin_Operator'  => 'bright_red',
+        Builtin_Function  => 'bright_red',
+        Builtin_Operator  => 'bright_red',
 
-    'Keyword'           => 'bright_red',
-    'Package'           => 'rgb345',
+        Keyword           => 'bright_red',
+        Package           => 'rgb345',
 
-    'Subroutine'        => 'rgb454',
-    'Bareword'          => 'white',
-    'Symbol'            => 'white',
-    'Operator'          => 'white',
-    'Number'            => 'white',
+        Subroutine        => 'rgb454',
+        Bareword          => 'white',
+        Symbol            => 'white',
+        Operator          => 'white',
+        Number            => 'white',
 
-    'Variable_Hash'     => 'rgb520',
-    'Variable_Array'    => 'rgb520',
-    'Variable_Scalar'   => 'rgb520',
-    'Variable_Typeglob' => 'rgb520',
+        Variable_Hash     => 'rgb520',
+        Variable_Array    => 'rgb520',
+        Variable_Scalar   => 'rgb520',
+        Variable_Typeglob => 'rgb520',
 
-    'Comment_Normal'    => 'grey10',
-    'Comment_POD'       => 'grey10',
-    'DATA'              => 'grey10',
-    'Directive'         => 'bright_green',
+        Comment_Normal    => 'grey10',
+        Comment_POD       => 'grey10',
+        DATA              => 'grey10',
+        Directive         => 'bright_green',
+    },
 };
 
 sub cmd_head1 {
@@ -73,10 +75,10 @@ sub _highlight_code {
 
     my $formatter = Syntax::Highlight::Perl::Improved->new;
 
-    my $color_table = COLOR_TABLE;
+    my $color_table = COLOR_TABLE->{code};
     my $color_table_file = catfile($ENV{HOME}, '.pod_text_color_delight');
     if (!$ENV{POD_TEXT_COLOR_DELIGHT_DEFAULT} && -f $color_table_file) {
-        $color_table = do $color_table_file;
+        $color_table = (do $color_table_file)->{code};
     }
 
     while (my ($type, $style) = each %{$color_table}) {
