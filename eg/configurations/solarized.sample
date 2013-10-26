@@ -1,4 +1,10 @@
 +{
+    head1  => 'cyan',
+    head2  => 'reset bold',
+    bold   => 'reset bold',
+    file   => 'green',
+    italic => 'reset italic',
+    link   => 'blue',
     code => {
         Character         => 'red',
         String            => 'cyan',
