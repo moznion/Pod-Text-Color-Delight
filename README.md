@@ -27,6 +27,8 @@ What is necessary is just to put a `.pod\_text\_color\_delight` (this is configu
 
 The example of a configuration file should look at <a href="https://github.com/moznion/Pod-Text-Color-Delight/blob/master/sample/configurations">samples</a>.
 
+If you specify not supported color or not specify color to element, the element will not be highlighted.
+
 
 
 If you want to force the default settings, please set true value into __POD\_TEXT\_COLOR\_DELIGHT\_DEFAULT__ of environment variable.

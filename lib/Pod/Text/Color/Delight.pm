@@ -194,6 +194,8 @@ What is necessary is just to put a F<.pod_text_color_delight> (this is configura
 
 The example of a configuration file should look at <a href="https://github.com/moznion/Pod-Text-Color-Delight/blob/master/sample/configurations">samples</a>.
 
+If you specify not supported color or not specify color to element, the element will not be highlighted.
+
 =end html
 
 
