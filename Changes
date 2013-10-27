@@ -2,8 +2,9 @@ Revision history for Perl extension Pod-Text-Color-Delight
 
 {{$NEXT}}
 
-0.04 2013-10-27T14:13:07Z
+0.05 2013-10-27T15:31:22Z
 
+    - Fix the issues that are displayed on the double
     - Add procedure to fall back when specified wrong color.
     - Do not highlight as CODE when it is in item section.
     - Update documents.

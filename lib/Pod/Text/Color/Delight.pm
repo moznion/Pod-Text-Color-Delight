@@ -7,7 +7,7 @@ use File::Spec::Functions qw(catfile);
 use Syntax::Highlight::Perl::Improved;
 use parent 'Pod::Text::Color';
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use constant COLOR_TABLE => {
     head1  => 'bright_cyan',
