@@ -95,7 +95,22 @@ sub cmd_f {
 
 sub cmd_c {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_c($attrs, $self->_highlight_code($attrs, $text));
+
+    my $highlighted = $self->SUPER::cmd_c($attrs, $self->_highlight_code($attrs, $text));
+    $self->{raw} = $text;
+
+    return $highlighted;
+}
+
+sub cmd_item_text {
+    my ($self, $attrs, $text) = @_;
+
+    if ($self->{raw}) {
+        $text = $self->{raw};
+    }
+    $self->SUPER::cmd_item_text($attrs, $text);
+
+    undef $self->{raw};
 }
 
 sub cmd_i {
