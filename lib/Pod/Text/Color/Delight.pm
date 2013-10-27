@@ -2,7 +2,7 @@ package Pod::Text::Color::Delight;
 use 5.008005;
 use strict;
 use warnings;
-use Term::ANSIColor qw(colored);
+use Term::ANSIColor ();
 use File::Spec::Functions qw(catfile);
 use Syntax::Highlight::Perl::Improved;
 use parent 'Pod::Text::Color';
@@ -65,32 +65,32 @@ sub new {
 
 sub cmd_head1 {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_head1($attrs, colored($text, $self->_select_color('head1')));
+    $self->SUPER::cmd_head1($attrs, $self->_colored($text, $self->_select_color('head1')));
 }
 
 sub cmd_head2 {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_head2($attrs, colored($text, $self->_select_color('head2')));
+    $self->SUPER::cmd_head2($attrs, $self->_colored($text, $self->_select_color('head2')));
 }
 
 sub cmd_head3 {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_head3($attrs, colored($text, $self->_select_color('head3')));
+    $self->SUPER::cmd_head3($attrs, $self->_colored($text, $self->_select_color('head3')));
 }
 
 sub cmd_head4 {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_head4($attrs, colored($text, $self->_select_color('head4')));
+    $self->SUPER::cmd_head4($attrs, $self->_colored($text, $self->_select_color('head4')));
 }
 
 sub cmd_b {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_b($attrs, colored($text, $self->_select_color('bold')));
+    $self->SUPER::cmd_b($attrs, $self->_colored($text, $self->_select_color('bold')));
 }
 
 sub cmd_f {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_f($attrs, colored($text, $self->_select_color('file')));
+    $self->SUPER::cmd_f($attrs, $self->_colored($text, $self->_select_color('file')));
 }
 
 sub cmd_c {
@@ -100,12 +100,12 @@ sub cmd_c {
 
 sub cmd_i {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_i($attrs, colored($text, $self->_select_color('italic')));
+    $self->SUPER::cmd_i($attrs, $self->_colored($text, $self->_select_color('italic')));
 }
 
 sub cmd_l {
     my ($self, $attrs, $text) = @_;
-    $self->SUPER::cmd_l($attrs, colored($text, $self->_select_color('link')));
+    $self->SUPER::cmd_l($attrs, $self->_colored($text, $self->_select_color('link')));
 }
 
 sub cmd_verbatim {
@@ -129,6 +129,19 @@ sub _select_color {
     my ($self, $element) = @_;
 
     return $self->{color_table}->{$element} || COLOR_TABLE->{$element} || 'reset';
+}
+
+sub _colored {
+    my ($self, $text, $color) = @_;
+
+    my $colored_text = '';
+    eval { $colored_text = Term::ANSIColor::colored($text, $color) };
+
+    if ($@) {
+        $colored_text = Term::ANSIColor::colored($text, 'reset');
+    }
+
+    return $colored_text;
 }
 1;
 __END__
