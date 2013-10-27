@@ -134,6 +134,10 @@ sub _highlight_code {
     my $formatter = Syntax::Highlight::Perl::Improved->new;
 
     while (my ($type, $style) = each %{$self->_select_color('code')}) {
+        Term::ANSIColor::colored('dummy', $style);
+        if ($@) {
+            $style = 'reset';
+        }
         $formatter->set_format($type, [Term::ANSIColor::color($style), Term::ANSIColor::color('reset')]);
     }
 
