@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/moznion/Pod-Text-Color-Delight.png?branch=master)](https://travis-ci.org/moznion/Pod-Text-Color-Delight)
 # NAME
 
 Pod::Text::Color::Delight - Delight Light Highlight the POD
