@@ -19,9 +19,9 @@ my $pod_file = catfile($FindBin::Bin, 'resources', 'item_and_code.pod');
 my $got      = capture_stdout{ $delight->parse_from_file($pod_file) };
 
 is $got, <<"...", "Do not treat as CODE when it is in item section.";
-    \$foo = \"bar\"
+    \"\$foo = \"bar\"\"
     foo
-    \$bar = \"baz\"
+    \"\$bar = \"baz\"\"
 
     \"\e[38;5;208m\$bar\e[0m \e[37m=\e[0m \e[38;5;222m\"\e[0m\e[38;5;222mbaz\e[0m\e[38;5;222m\"\e[0m\"
 

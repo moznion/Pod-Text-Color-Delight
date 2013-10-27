@@ -107,6 +107,7 @@ sub cmd_item_text {
 
     if ($self->{raw}) {
         $text = $self->{raw};
+        $text = '"' . $text . '"';
     }
     $self->SUPER::cmd_item_text($attrs, $text);
 
