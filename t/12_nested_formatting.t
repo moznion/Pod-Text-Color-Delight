@@ -30,6 +30,14 @@ is $got, <<"...", "Nested format ok";
 
     \"\e[38;5;208m\$foo\e[0m \e[36m\e[92mbar\e[0m\e[0m \e[36m\e[92mbaz\e[0m\e[0m\"
 
+    \e[36m\e[92m\e[1m\e[0;1mfoo\e[0m\e[0m\e[0m\e[0m
+
+    \e[1m\e[0;1m\"\e[38;5;208m\$foo\e[0m\"\e[0m\e[0m
+
+    \e[33m\e[0;3m\e[1m\e[0;1mfoo\e[0m\e[0m\e[0m\e[0m
+
+    \e[1m\e[0;1m\e[33m\e[0;3mfoo\e[0m\e[0m \"\e[38;5;208m\$bar\e[0m\"\e[0m\e[0m
+
 ...
 
 done_testing;

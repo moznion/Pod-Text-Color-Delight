@@ -90,6 +90,7 @@ sub cmd_b {
         return "B<$text>";
     }
 
+    $text = $self->_highlight_raw_format($attrs, $text);
     $self->SUPER::cmd_b($attrs, $self->_colored($text, $self->_select_color('bold')));
 }
 
@@ -100,6 +101,7 @@ sub cmd_f {
         return "F<$text>";
     }
 
+    $text = $self->_highlight_raw_format($attrs, $text);
     $self->SUPER::cmd_f($attrs, $self->_colored($text, $self->_select_color('file')));
 }
 
@@ -151,6 +153,7 @@ sub cmd_i {
         return "I<$text>";
     }
 
+    $text = $self->_highlight_raw_format($attrs, $text);
     $self->SUPER::cmd_i($attrs, $self->_colored($text, $self->_select_color('italic')));
 }
 
@@ -166,6 +169,7 @@ sub cmd_l {
         return "L<$text>";
     }
 
+    $text = $self->_highlight_raw_format($attrs, $text);
     $self->SUPER::cmd_l($attrs, $self->_colored($text, $self->_select_color('link')));
 }
 
@@ -207,6 +211,32 @@ sub _colored {
     }
 
     return $colored_text;
+}
+
+sub _highlight_raw_format {
+    my ($self, $attrs, $text) = @_;
+
+    # XXX for file format
+    $text =~ s/F<(.*?)>
+              /$self->cmd_f(Term::ANSIColor::colorstrip($attrs, $1))
+              /ex;
+
+    # XXX for italic format
+    $text =~ s/I<(.*?)>
+              /$self->cmd_i(Term::ANSIColor::colorstrip($attrs, $1))
+              /ex;
+
+    # XXX for bold format
+    $text =~ s/B<(.*?)>
+              /$self->cmd_b(Term::ANSIColor::colorstrip($attrs, $1))
+              /ex;
+
+    # XXX for link format
+    $text =~ s/L<(.*?)>
+              /$self->cmd_l(Term::ANSIColor::colorstrip({type => 'pod'}, $1))
+              /ex;
+
+    return $text;
 }
 1;
 __END__
