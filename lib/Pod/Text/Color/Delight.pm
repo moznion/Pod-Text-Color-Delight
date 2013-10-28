@@ -85,11 +85,21 @@ sub cmd_head4 {
 
 sub cmd_b {
     my ($self, $attrs, $text) = @_;
+
+    if ($self->{PENDING}->[2]) {
+        return "B<$text>";
+    }
+
     $self->SUPER::cmd_b($attrs, $self->_colored($text, $self->_select_color('bold')));
 }
 
 sub cmd_f {
     my ($self, $attrs, $text) = @_;
+
+    if ($self->{PENDING}->[2]) {
+        return "F<$text>";
+    }
+
     $self->SUPER::cmd_f($attrs, $self->_colored($text, $self->_select_color('file')));
 }
 
@@ -98,6 +108,26 @@ sub cmd_c {
 
     my $highlighted = $self->SUPER::cmd_c($attrs, $self->_highlight_code($attrs, $text));
     $self->{raw} = $text;
+
+    # XXX for file format
+    $highlighted =~ s/\e\[37mF\e\[0m\e\[37m<\e\[0m(.*?)\e\[37m>\e\[0m
+                     /$self->cmd_f(Term::ANSIColor::colorstrip($attrs, $1))
+                     /gex;
+
+    # XXX for italic format
+    $highlighted =~ s/\e\[37mI\e\[0m\e\[37m<\e\[0m(.*?)\e\[37m>\e\[0m
+                     /$self->cmd_i(Term::ANSIColor::colorstrip($attrs, $1))
+                     /gex;
+
+    # XXX for bold format
+    $highlighted =~ s/\e\[37mB\e\[0m\e\[37m<\e\[0m(.*?)\e\[37m>\e\[0m
+                     /$self->cmd_b(Term::ANSIColor::colorstrip($attrs, $1))
+                     /gex;
+
+    # XXX for link format
+    $highlighted =~ s/\e\[37mL\e\[0m\e\[37m<\e\[0m(.*?)\e\[37m>\e\[0m
+                     /$self->cmd_l(Term::ANSIColor::colorstrip({type => 'pod'}, $1))
+                     /gex;
 
     return $highlighted;
 }
@@ -116,6 +146,11 @@ sub cmd_item_text {
 
 sub cmd_i {
     my ($self, $attrs, $text) = @_;
+
+    if ($self->{PENDING}->[2]) {
+        return "I<$text>";
+    }
+
     $self->SUPER::cmd_i($attrs, $self->_colored($text, $self->_select_color('italic')));
 }
 
@@ -125,6 +160,10 @@ sub cmd_l {
     # to fix the issues that are displayed on the double
     if ($attrs->{type} eq 'url') {
         $attrs->{type} = 'pod';
+    }
+
+    if ($self->{PENDING}->[2]) {
+        return "L<$text>";
     }
 
     $self->SUPER::cmd_l($attrs, $self->_colored($text, $self->_select_color('link')));

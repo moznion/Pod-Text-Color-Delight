@@ -1,0 +1,11 @@
+=head1 foo
+
+C<$foo I<bar>>
+
+C<$foo L<bar>>
+
+C<$foo L<http:example.com>>
+
+C<$foo B<bar>>
+
+C<$foo F<bar> F<baz>>
