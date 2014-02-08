@@ -109,7 +109,7 @@ sub cmd_c {
     my ($self, $attrs, $text) = @_;
 
     my $highlighted = $self->SUPER::cmd_c($attrs, $self->_highlight_code($attrs, $text));
-    $self->{raw} = $text;
+    $self->{raw} = $text; # for C<...> that is in `=item`
 
     # XXX for file format
     $highlighted =~ s/\e\[37mF\e\[0m\e\[37m<\e\[0m(.*?)\e\[37m>\e\[0m
@@ -137,7 +137,10 @@ sub cmd_c {
 sub cmd_item_text {
     my ($self, $attrs, $text) = @_;
 
-    if ($self->{raw}) {
+    my $raw = $self->{raw};
+    my ($_text) = Term::ANSIColor::colorstrip($text) =~ m/^"(.*)"$/;
+
+    if ($raw && $_text && $_text eq $raw) {
         $text = $self->{raw};
         $text = '"' . $text . '"';
     }
