@@ -268,6 +268,17 @@ And you can configure the color settings for each elements as you like. Please l
 
 Basic usage is the same as L<Pod::Text::Color>. So please refer it.
 
+=head1 BASIC USAGE
+
+Use this module with perldoc -M option
+
+    $ perldoc -MPod::Text::Color::Delight Foo::Bar # delight!!
+
+Also you can use this module with C<PERLDOC> environment variable
+
+    $ export PERLDOC="-MPod::Text::Color::Delight"
+    $ perldoc Foo::Bar # delight!!
+
 =head1 CONFIGURATION AND ENVIRONMENT
 
 =begin html
