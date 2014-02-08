@@ -4,7 +4,7 @@
       "moznion <moznion@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.8.0, CPAN::Meta::Converter version 2.132660",
+   "generated_by" : "Minilla/v0.11.0, CPAN::Meta::Converter version 2.133380",
    "license" : [
       "perl_5"
    ],
@@ -65,9 +65,9 @@
       "homepage" : "https://github.com/moznion/Pod-Text-Color-Delight",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/moznion/Pod-Text-Color-Delight",
+         "url" : "git://github.com/moznion/Pod-Text-Color-Delight.git",
          "web" : "https://github.com/moznion/Pod-Text-Color-Delight"
       }
    },
-   "version" : "0.06"
+   "version" : "0.07"
 }

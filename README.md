@@ -12,19 +12,30 @@ Pod::Text::Color::Delight - Delight Light Highlight the POD
 
 # DESCRIPTION
 
-Pod::Text::Color::Delight is a subclass of [Pod::Text::Color](http://search.cpan.org/perldoc?Pod::Text::Color) that highlights the pod text by using ANSI color escape.
+Pod::Text::Color::Delight is a subclass of [Pod::Text::Color](https://metacpan.org/pod/Pod::Text::Color) that highlights the pod text by using ANSI color escape.
 
 Highlight of this module is a little radical in comparison with parent. On default setting, this module highlights headlines, links, and other several elements.
 Additionally, this module also highlights Perl code (e.g. SYNOPSIS).
 
-And you can configure the color settings for each elements as you like. Please look ["CONFIGURATION AND ENVIRONMENT"](#CONFIGURATION AND ENVIRONMENT).
+And you can configure the color settings for each elements as you like. Please look ["CONFIGURATION AND ENVIRONMENT"](#configuration-and-environment).
 
-Basic usage is the same as [Pod::Text::Color](http://search.cpan.org/perldoc?Pod::Text::Color). So please refer it.
+Basic usage is the same as [Pod::Text::Color](https://metacpan.org/pod/Pod::Text::Color). So please refer it.
+
+# BASIC USAGE
+
+Use this module with perldoc -M option
+
+    $ perldoc -MPod::Text::Color::Delight Foo::Bar # delight!!
+
+Also you can use this module with `PERLDOC` environment variable
+
+    $ export PERLDOC="-MPod::Text::Color::Delight"
+    $ perldoc Foo::Bar # delight!!
 
 # CONFIGURATION AND ENVIRONMENT
 
 You can configure colors as you like!
-What is necessary is just to put a `.pod\_text\_color\_delight` (this is configuration file) on your home directory.
+What is necessary is just to put a `.pod_text_color_delight` (this is configuration file) on your home directory.
 
 The example of a configuration file should look at <a href="https://github.com/moznion/Pod-Text-Color-Delight/blob/master/sample/configurations">samples</a>.
 
@@ -41,7 +52,7 @@ this module will not highlight texts completely.
 
 # SEE ALSO
 
-[Pod::Text](http://search.cpan.org/perldoc?Pod::Text), [Pod::Text::Color](http://search.cpan.org/perldoc?Pod::Text::Color)
+[Pod::Text](https://metacpan.org/pod/Pod::Text), [Pod::Text::Color](https://metacpan.org/pod/Pod::Text::Color)
 
 # LICENSE
 
